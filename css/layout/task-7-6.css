@@ -1,0 +1,85 @@
+.control-boxes-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 24px;
+  width: 534px;
+  background-color: var(--form-bgr-color);
+}
+
+#controls {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  column-gap: 16px;
+  padding: 32px;
+  background-color: var(--item-bgr-color);
+}
+
+#controls > input {
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04px;
+  border-radius: 8px;  
+  border: 1px solid var(--border-normal-color);
+  transition: border 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+}
+
+#controls > input:hover,
+#controls > input:focus {
+  border: 1px solid var(--border-hover-color);
+}
+
+#controls > button {
+  cursor: pointer;
+  color: var(--button-color);
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.64px;
+  width: 148px;
+  height: 40px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button[data-create] {
+  background-color: var(--primary-button-bgr-color);
+}
+
+button[data-destroy] {
+  background-color: var(--secondary-button-bgr-color);
+}
+
+button[data-create]:hover,
+button[data-create]:focus {
+  background-color: var(--primary-button-accent-bgr-color);
+}
+
+button[data-destroy]:hover,
+button[data-destroy]:focus {
+  background-color: var(--secondary-button-accent-bgr-color);
+}
+
+#boxes {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 16px;
+  row-gap: 32px;
+  padding: 32px;
+  background-color: var(--item-bgr-color);
+}

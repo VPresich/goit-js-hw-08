@@ -1,0 +1,15 @@
+@import "./utils/variables.css";
+@import "./utils/visually-hidden.css";
+
+@import "./base/common.css";
+@import "./base/container.css";
+@import "./layout/header.css";
+@import "./layout/home.css";
+
+@import "./layout/task-7-1.css";
+@import "./layout/task-7-2-1.css";
+@import "./layout/task-7-2.css";
+@import "./layout/task-7-3.css";
+@import "./layout/task-7-4.css";
+@import "./layout/task-7-5.css";
+@import "./layout/task-7-6.css";
