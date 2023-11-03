@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>home-work-08</title>
+    <title>Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,12 +34,35 @@
       </div>
     </header>
     <main>
-      <section class="section section-layout">
-        <div class="container home-page-container">
-          <h1 class="title-home">Домашня робота JS - 7</h1>
-          <h2 class="name-stud">Валентина Александрова</h2>
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title visually-hidden" id="secondary-gallery">
+            Secondary gallery
+          </h2>
+          <ul class="gallery"></ul>
         </div>
       </section>
+
+      <!-- ===================Modal backdrop - my ======================-->
+      <div class="modal-backdrop" id="id-modal-backdrop">
+        <div class="modal-window">
+          <button class="close-button" type="button" id="id-close-button">
+            <svg class="close-icon" width="8" height="8">
+              <use href="./img/icons.svg#close-form"></use>
+            </svg>
+          </button>
+          <img
+            id="modal-image"
+            class="modal-content"
+            src="https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg"
+            alt="Photo 1"
+            width="1112"
+            height="590"
+          />
+        </div>
+      </div>
     </main>
+    <script src="./js/create-gallery.js" type="module"></script>
+    <script src="./js/delegating.js" type="module"></script>
   </body>
 </html>
