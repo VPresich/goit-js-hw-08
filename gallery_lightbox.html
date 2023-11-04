@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>home-work-08</title>
+    <title>Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +15,12 @@
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
     />
     <link rel="stylesheet" href="./css/index.css" />
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css
+"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="header-page">
@@ -41,12 +47,22 @@
       </div>
     </header>
     <main>
-      <section class="section section-layout">
-        <div class="container home-page-container">
-          <h1 class="title-home">Домашня робота JS - 8</h1>
-          <h2 class="name-stud">Валентина Александрова</h2>
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title visually-hidden" id="secondary-gallery">
+            Secondary gallery
+          </h2>
+          <ul class="gallery"></ul>
         </div>
       </section>
     </main>
+    <script
+      async
+      src="
+https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js
+"
+    ></script>
+    <script src="./js/create-gallery.js" type="module"></script>
+    <script src="./js/delegating-light-box.js" type="module"></script>
   </body>
 </html>
