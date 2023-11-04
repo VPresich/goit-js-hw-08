@@ -1,10 +1,13 @@
+// For my modal window
 const galleryRef = document.querySelector(".gallery");
+const KEY_CODE_ESC = "Escape";
+
 const modalBackdropRef = document.querySelector(".modal-backdrop");
 const buttonCloseRef = document.querySelector(".close-button");
 const modalContentRef = document.querySelector(".modal-content");
 
-buttonCloseRef.addEventListener("click", onCloseModalWindow);
 galleryRef.addEventListener("click", onImageClick);
+buttonCloseRef.addEventListener("click", onCloseModalWindow);
 modalBackdropRef.addEventListener("click", onBackdropClick);
 
 function onImageClick(event) {
@@ -26,17 +29,18 @@ function onImageClick(event) {
 function openModalWindow({ src, alt }) {
   modalContentRef.src = src;
   modalContentRef.alt = alt;
-  window.addEventListener("keydown", onWindowKeydown);
   modalBackdropRef.classList.add("is-open");
+
+  window.addEventListener("keydown", onWindowKeydown);
 }
 
 function onCloseModalWindow(event) {
   window.removeEventListener("keydown", onWindowKeydown);
+
   modalBackdropRef.classList.remove("is-open");
 }
 
 function onWindowKeydown(event) {
-  const KEY_CODE_ESC = "Escape";
   if (event.code == KEY_CODE_ESC) {
     onCloseModalWindow(event);
   }

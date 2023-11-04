@@ -1,8 +1,9 @@
 const galleryRef = document.querySelector(".gallery");
 
-galleryRef.addEventListener("click", onImageClick);
-
+const KEY_CODE_ESC = "Escape";
 let modalWindowRef = null;
+
+galleryRef.addEventListener("click", onImageClick);
 
 function onImageClick(event) {
   const targentRef = event.target;
@@ -18,8 +19,6 @@ function onImageClick(event) {
     preview: targentRef.getAttribute("src"),
   };
 
-  console.log(imageSrc);
-
   openModalWindow(imageSrc);
 }
 
@@ -29,17 +28,17 @@ function openModalWindow({ src, alt }) {
         <img src="${src}" alt="${alt}"/>        
     </div>`
   );
-  window.addEventListener("keydown", onKeydown);
   modalWindowRef.show();
+
+  window.addEventListener("keydown", onKeydown);
 }
 
 function closeModalWindow(event) {
-  modalWindowRef.close();
   window.removeEventListener("keydown", onKeydown);
+  modalWindowRef.close();
 }
 
 function onKeydown(event) {
-  const KEY_CODE_ESC = "Escape";
   if (event.code == KEY_CODE_ESC) {
     closeModalWindow(event);
   }

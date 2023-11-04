@@ -31,30 +31,16 @@
 // Зверни увагу на те, що зображення огорнуте посиланням,
 // отже, по кліку на нього за замовчуванням користувач буде перенаправлений на іншу
 // сторінку, куди вказує href. Заборони цю поведінку за замовчуванням.
+//=====================================================================================
 
-// Import array of images
 import images from "./data/images.js";
 
-// Function declaration for create of markup (string) for all images
-// const createGallery = (images) => {
-//   return images
-//     .map(({ preview, description, original }) => {
-//       return `<li class="gallery-item">
-//             <a class="gallery-link" href="large-image.jpg">
-//               <img class="gallery-img"
-//                   src="${preview}"
-//                   alt="${description}"
-//                   data-source="${original}"
-//                />
-//             </a>
-//           </li>`;
-//     })
-//     .join("");
-// };
+const galleryRef = document.querySelector(".gallery");
 
-// Function declaration for create of markup (string) for 1 item (li) with img
-const imageMarkup = ({ preview, description, original }) => {
-  return `<li class="gallery-item">
+const createGallery = (images) => {
+  return images
+    .map(({ preview, description, original }) => {
+      return `<li class="gallery-item">
             <a class="gallery-link" href="large-image.jpg">
               <img class="gallery-img"
                   src="${preview}"
@@ -63,18 +49,27 @@ const imageMarkup = ({ preview, description, original }) => {
                />
             </a>
           </li>`;
+    })
+    .join("");
 };
 
-// Function declaration for create markup of all images
-const createGallery = (images) => {
-  return images.map(imageMarkup).join("");
-};
-
-// Call function
 const imagesMarkup = createGallery(images);
-
-// Ref to container for inserting
-const galleryRef = document.querySelector(".gallery");
-
-// Insert in DOM
 galleryRef.insertAdjacentHTML("beforeend", imagesMarkup);
+
+// ===========================================================
+// function imageMarkup({ preview, description, original }) {
+//   return `<li class="gallery-item">
+//             <a class="gallery-link" href="large-image.jpg">
+//               <img class="gallery-img"
+//                   src="${preview}"
+//                   alt="${description}"
+//                   data-source="${original}"
+//                />
+//             </a>
+//           </li>`;
+// }
+
+// function createGallery(images) {
+//   return images.map(imageMarkup).join("");
+// }
+// =========================================================
