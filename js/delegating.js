@@ -1,11 +1,17 @@
 // For my modal window
 import { KEY_CODE_ESC } from "./constants.js";
+import Slider from "./slider.js";
+import SliderInterface from "./slider-interface.js";
 
 const refs = {
   gallery: document.querySelector(".gallery"),
   modalBackdrop: document.querySelector(".modal-backdrop"),
   buttonClose: document.querySelector(".close-button"),
   modalContent: document.querySelector(".modal-content"),
+  slidesList: document.querySelector(".gallery").querySelectorAll("li"),
+  prevBtn: document.getElementById("prevBtn"),
+  nextBtn: document.getElementById("nextBtn"),  
+  sliderDots: document.querySelector('.slider-dots'),
 };
 
 refs.gallery.addEventListener("click", onImageClick);
@@ -25,6 +31,17 @@ function onImageClick(event) {
     alt: targetRef.alt,
     preview: targetRef.src,
   };
+  const closestLi = targetRef.closest(".gallery-item"); 
+  const indexList = Array.from(event.currentTarget.children).indexOf(closestLi);
+  
+  const sliderRef = new Slider(indexList, 1, refs.slidesList.length);
+  const sliderInterface = new SliderInterface(sliderRef,
+  refs.slidesList,
+  refs.prevBtn,
+  refs.nextBtn,
+  refs.modalContent,
+  refs.sliderDots
+  );  
   openModalWindow(imageSrc);
 }
 
