@@ -36,12 +36,19 @@
                 >Gallery with LightBox Modal Window</a
               >
             </li>
+            <li class="site-navigation-item">
+              <a
+                class="site-navigation-item-link"
+                href="./gallery-lightbox-buttons.html"
+                >Gallery LightBox with butons</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
     </header>
     <main>
-      <section class="section">
+      <section>
         <div class="container">
           <h2 class="section-title visually-hidden" id="secondary-gallery">
             Secondary gallery
@@ -54,23 +61,23 @@
       <div class="modal-backdrop" id="id-modal-backdrop">
         <div class="modal-window">
           <button class="close-button" type="button" id="id-close-button">
-            <svg class="close-icon" width="8" height="8">
+            <svg class="close-icon" width="16" height="16">
               <use href="./img/icons.svg#close-form"></use>
             </svg>
           </button>
-          <img id="modal-image" class="modal-content" src="" alt="" />
-          <div class="slider-container">
+          <img class="modal-content" src="" alt="" />
+
+          <div class="slider-buttons">
+            <button class="slider-button" id="prevBtn">Previous</button>
             <div class="slider-dots"></div>
-            <div class="buttons-slider">
-              <button id="prevBtn">Previous</button>
-              <button id="nextBtn">Next</button>
-            </div>
+            <button class="slider-button" id="nextBtn">Next</button>
+            <button class="slider-button" id="closeBtn">Close</button>
           </div>
         </div>
       </div>
       <!-- ===================Modal backdrop =========================-->
     </main>
     <script src="./js/create-gallery.js" type="module"></script>
-    <script src="./js/delegating.js" type="module"></script>
+    <script src="./js/modal-window-handles.js" type="module"></script>
   </body>
 </html>

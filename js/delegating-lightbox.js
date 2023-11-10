@@ -25,8 +25,8 @@ function onImageClick(event) {
 
 function openModalWindow({ src, alt }) {
   modalWindowRef = basicLightbox.create(
-    `<div class="modal">
-        <img src="${src}" alt="${alt}"/>        
+    `<div class="lightbox-modal ">   
+        <img class="lightbox-image" src="${src}" alt="${alt}"/>           
     </div>`,
     {
       onShow: () => {
@@ -35,6 +35,7 @@ function openModalWindow({ src, alt }) {
       onClose: () => {
         document.removeEventListener("keydown", onKeydown);
       },
+      closable: true,
     }
   );
   modalWindowRef.show();
