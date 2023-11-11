@@ -59,7 +59,7 @@ galleryRef.insertAdjacentHTML("beforeend", imagesMarkup);
 // ===========================================================
 // function imageMarkup({ preview, description, original }) {
 //   return `<li class="gallery-item">
-//             <a class="gallery-link" href="large-image.jpg">
+//             <a class="gallery-link" href="">
 //               <img class="gallery-img"
 //                   src="${preview}"
 //                   alt="${description}"

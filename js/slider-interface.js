@@ -9,6 +9,7 @@ class SliderInterface {
     this.prevBtn = document.getElementById("prevBtn");
     this.nextBtn = document.getElementById("nextBtn");
     this.sliderDots = document.querySelector(".slider-dots");
+    this.slidesCounter = document.querySelector(".slider-counter");
 
     this.elementsList = elementsList;
     this.sliderContent = sliderContent;
@@ -79,6 +80,7 @@ class SliderInterface {
     this.updateContent();
     this.updateButtons();
     this.updateDisplayDots();
+    this.updateCounter();
   }
 
   updateContent() {
@@ -105,26 +107,10 @@ class SliderInterface {
     }
   }
 
-  onTouchStart(event) {
-    this.touchStartX = event.touches[0].clientX;
-  }
-
-  onTouchMove(event) {
-    const currentX = event.touches[0].clientX;
-    const deltaX = this.touchStartX - currentX;
-
-    if (deltaX > SliderInterface.touchThreshold) {
-      this.sliderRef.onNextSlide();
-      this.touchStartX = currentX;
-      this.update();
-    } else {
-      if (deltaX < -SliderInterface.touchThreshold) {
-        this.sliderRef.onPrevSlide();
-        this.touchStartX = currentX;
-        this.update();
-      }
-    }
-  }
+  updateCounter(){
+    this.slidesCounter.textContent = `${this.sliderRef.currentSlide + 1 + '/' + this.elementsList.length}`;   
+    console.log(this.slidesCounter.textContent); 
+  }  
 }
 
 export default SliderInterface;

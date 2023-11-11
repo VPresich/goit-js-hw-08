@@ -5,11 +5,12 @@ class LightboxSliderInterface {
   constructor(indexList, elementsList, lightboxRef) {
     this.#sliderRef = new Slider(indexList, 1, elementsList.length);
 
-    this.prevBtn = lightboxRef.element().querySelector("#prev-lightbox-button");
-    this.nextBtn = lightboxRef.element().querySelector("#next-lightbox-button");
-    this.sliderContent = lightboxRef.element().querySelector(".lightbox-image");
-    this.elementsList = elementsList;
+    this.prevBtn = lightboxRef.element().querySelector('#prev-lightbox-button');
+    this.nextBtn = lightboxRef.element().querySelector('#next-lightbox-button');
+    this.sliderContent = lightboxRef.element().querySelector('.lightbox-image');
+    this.slidesCount = lightboxRef.element().querySelector('.lightbox-counter');
 
+    this.elementsList = elementsList;
     this.initBtnsFunction();
     this.update();
   }
@@ -29,7 +30,7 @@ class LightboxSliderInterface {
   update() {
     this.updateContent();
     this.updateButtons();
-    this.updateCount();
+    this.updateCounter();
   }
 
   updateContent() {
@@ -45,7 +46,9 @@ class LightboxSliderInterface {
     this.nextBtn.disabled = this.#sliderRef.isExistNext();
   }
 
-  updateCount() {}
+  updateCounter() {
+    this.slidesCount.textContent = `${this.#sliderRef.currentSlide + 1 + '/' + this.elementsList.length}`;    
+  }
 }
 
 export default LightboxSliderInterface;
