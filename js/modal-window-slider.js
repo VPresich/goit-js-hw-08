@@ -1,4 +1,4 @@
-import SliderInterface from "./slider-interface-copy.js";
+import SliderInterface from "./slider-interface.js";
 
 class ModalWindowSlider extends SliderInterface {
   #sliderContent;

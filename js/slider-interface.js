@@ -181,7 +181,7 @@ class SliderInterface {
 
   onSliderDotsClick(event) {
     const dot = event.target;
-    if (dot.classList.contains("slider-dot")) {
+    if (dot.classList.contains(this.#dotDefaultClass)) {
       const index = parseInt(dot.dataset.index, 10);
       this.#sliderRef.goToSlide(index);
       this.update();
