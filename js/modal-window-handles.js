@@ -1,5 +1,5 @@
 import { KEY_CODE_ESC } from "./constants.js";
-import SliderInterface from "./slider-interface.js";
+import ModalWindowSlider from "./modal-window-slider.js";
 
 const refs = {
   gallery: document.querySelector(".gallery"),
@@ -14,6 +14,20 @@ refs.buttonClose.addEventListener("click", onCloseModalWindow);
 refs.modalBackdrop.addEventListener("click", onBackdropClick);
 refs.modalClose.addEventListener("click", onCloseModalWindow);
 
+let modalWindowSlider;
+const dataForSlider = {
+  slidesPerPage: 1,
+  prevBtnId: "prevBtn",
+  nextBtnId: "nextBtn",
+  dotsContainerId: "sliderDots",
+  sliderContainerId: "modalContent",
+  slidesCounterId: "slidesCounter",
+  dotDefaultClass: "slider-dot",
+  dotActiveClass: "active-dot",
+  isDotContainText: false,
+  sliderContent: refs.modalContent,
+};
+
 function onImageClick(event) {
   const targetRef = event.target;
 
@@ -27,11 +41,12 @@ function onImageClick(event) {
   const listImages = event.currentTarget.children;
   const indexList = Array.from(listImages).indexOf(closestLi);
 
-  const sliderInterface = new SliderInterface(
-    indexList,
-    listImages,
-    refs.modalContent
-  );
+  modalWindowSlider = new ModalWindowSlider({
+    ...dataForSlider,
+    currentSlide: indexList,
+    elementsList: listImages,
+  });
+
   openModalWindow();
 }
 function openModalWindow() {
@@ -42,6 +57,7 @@ function openModalWindow() {
 function onCloseModalWindow(event) {
   window.removeEventListener("keydown", onWindowKeydown);
   refs.modalBackdrop.classList.remove("is-open");
+  modalWindowSlider.destroy();
 }
 
 function onWindowKeydown(event) {
