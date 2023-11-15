@@ -1,12 +1,12 @@
-import { KEY_CODE_ESC } from './constants.js';
-import SliderInterface from './slider-interface.js';
+import { KEY_CODE_ESC } from "./constants.js";
+import ModalWindowSlider from "./modal-window-slider.js";
 
 const refs = {
-  gallery: document.querySelector('.gallery'),
-  modalBackdrop: document.querySelector('.modal-backdrop'),
-  buttonClose: document.querySelector('.close-button'),
-  modalContent: document.querySelector('.modal-content'),
-  modalClose: document.querySelector('#closeBtn'),
+  gallery: document.querySelector(".gallery"),
+  modalBackdrop: document.querySelector(".modal-backdrop"),
+  buttonClose: document.querySelector(".close-button"),
+  modalContent: document.querySelector(".modal-content"),
+  modalClose: document.querySelector("#closeBtn"),
 };
 
 refs.gallery.addEventListener("click", onImageClick);
@@ -14,36 +14,50 @@ refs.buttonClose.addEventListener("click", onCloseModalWindow);
 refs.modalBackdrop.addEventListener("click", onBackdropClick);
 refs.modalClose.addEventListener("click", onCloseModalWindow);
 
+let modalWindowSlider;
+const dataForSlider = {
+  slidesPerPage: 1,
+  prevBtnId: "prevBtn",
+  nextBtnId: "nextBtn",
+  dotsContainerId: "sliderDots",
+  sliderContainerId: "modalContent",
+  slidesCounterId: "slidesCounter",
+  dotDefaultClass: "slider-dot",
+  dotActiveClass: "active-dot",
+  isDotContainText: false,
+  sliderContent: refs.modalContent,
+};
+
 function onImageClick(event) {
   const targetRef = event.target;
 
-  const isImageRef = targetRef.classList.contains('gallery-img');
+  const isImageRef = targetRef.classList.contains("gallery-img");
   if (!isImageRef) {
     return;
   }
   event.preventDefault();
 
-  const closestLi = targetRef.closest('.gallery-item');
+  const closestLi = targetRef.closest(".gallery-item");
   const listImages = event.currentTarget.children;
   const indexList = Array.from(listImages).indexOf(closestLi);
 
-  const sliderInterface = new SliderInterface(
-    indexList,
-    listImages,
-    refs.modalContent
-  );
+  modalWindowSlider = new ModalWindowSlider({
+    ...dataForSlider,
+    currentSlide: indexList,
+    elementsList: listImages,
+  });
+
   openModalWindow();
 }
 function openModalWindow() {
-  refs.modalBackdrop.classList.add('is-open');
-  document.body.classList.add('stop-scrolling');
-  window.addEventListener('keydown', onWindowKeydown);
+  refs.modalBackdrop.classList.add("is-open");
+  window.addEventListener("keydown", onWindowKeydown);
 }
 
 function onCloseModalWindow(event) {
-  window.removeEventListener('keydown', onWindowKeydown);
-  document.body.classList.remove('stop-scrolling');
-  refs.modalBackdrop.classList.remove('is-open');
+  window.removeEventListener("keydown", onWindowKeydown);
+  refs.modalBackdrop.classList.remove("is-open");
+  modalWindowSlider.destroy();
 }
 
 function onWindowKeydown(event) {

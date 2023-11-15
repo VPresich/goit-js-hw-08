@@ -5,26 +5,24 @@ class LightboxSliderInterface {
   constructor(indexList, elementsList, lightboxRef) {
     this.#sliderRef = new Slider(indexList, 1, elementsList.length);
 
-    this.prevBtn = lightboxRef.element().querySelector('#prev-lightbox-button');
-    this.nextBtn = lightboxRef.element().querySelector('#next-lightbox-button');
-    this.sliderContent = lightboxRef.element().querySelector('.lightbox-image');
-    this.slidesCount = lightboxRef.element().querySelector('.lightbox-counter');
+    this.prevBtn = lightboxRef.element().querySelector("#prev-lightbox-button");
+    this.nextBtn = lightboxRef.element().querySelector("#next-lightbox-button");
+    this.sliderContent = lightboxRef.element().querySelector(".lightbox-image");
+    this.slidesCount = lightboxRef.element().querySelector(".lightbox-counter");
 
     this.elementsList = elementsList;
     this.initBtnsFunction();
     this.update();
   }
 
-  initBtnsFunction() {
-    this.prevBtn.addEventListener("click", () => {
-      this.#sliderRef.onPrevSlide();
-      this.update();
-    });
+  destroy() {
+    this.prevBtn.removeEventListener("click", this.onPrevBtnClick.bind(this));
+    this.nextBtn.removeEventListener("click", this.onNextBtnClick.bind(this));
+  }
 
-    this.nextBtn.addEventListener("click", () => {
-      this.#sliderRef.onNextSlide();
-      this.update();
-    });
+  initBtnsFunction() {
+    this.prevBtn.addEventListener("click", this.onPrevBtnClick.bind(this));
+    this.nextBtn.addEventListener("click", this.onNextBtnClick.bind(this));
   }
 
   update() {
@@ -47,7 +45,19 @@ class LightboxSliderInterface {
   }
 
   updateCounter() {
-    this.slidesCount.textContent = `${this.#sliderRef.currentSlide + 1 + '/' + this.elementsList.length}`;    
+    this.slidesCount.textContent = `${
+      this.#sliderRef.currentSlide + 1 + "/" + this.elementsList.length
+    }`;
+  }
+
+  onPrevBtnClick() {
+    this.#sliderRef.onPrevSlide();
+    this.update();
+  }
+
+  onNextBtnClick() {
+    this.#sliderRef.onNextSlide();
+    this.update();
   }
 }
 

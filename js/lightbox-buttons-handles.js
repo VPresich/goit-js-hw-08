@@ -23,6 +23,7 @@ function onImageClick(event) {
 }
 
 function openModalWindow(listImages, indexList) {
+  let lightboxSlider;
   modalWindowRef = basicLightbox.create(createLightboxMarkup(), {
     onShow: (instance) => {
       document.addEventListener("keydown", onKeydown);
@@ -32,7 +33,7 @@ function openModalWindow(listImages, indexList) {
         .querySelector(".lightbox-close");
       lightboxCloseBtn.addEventListener("click", instance.close);
 
-      const lightboxSlider = new LightboxSliderInterface(
+      lightboxSlider = new LightboxSliderInterface(
         indexList,
         listImages,
         instance
@@ -40,6 +41,7 @@ function openModalWindow(listImages, indexList) {
     },
     onClose: (instance) => {
       document.removeEventListener("keydown", onKeydown);
+      lightboxSlider.destroy();
     },
     closable: true,
   });
