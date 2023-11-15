@@ -1,12 +1,12 @@
-import { KEY_CODE_ESC } from './constants.js';
-import SliderInterface from './slider-interface.js';
+import { KEY_CODE_ESC } from "./constants.js";
+import SliderInterface from "./slider-interface.js";
 
 const refs = {
-  gallery: document.querySelector('.gallery'),
-  modalBackdrop: document.querySelector('.modal-backdrop'),
-  buttonClose: document.querySelector('.close-button'),
-  modalContent: document.querySelector('.modal-content'),
-  modalClose: document.querySelector('#closeBtn'),
+  gallery: document.querySelector(".gallery"),
+  modalBackdrop: document.querySelector(".modal-backdrop"),
+  buttonClose: document.querySelector(".close-button"),
+  modalContent: document.querySelector(".modal-content"),
+  modalClose: document.querySelector("#closeBtn"),
 };
 
 refs.gallery.addEventListener("click", onImageClick);
@@ -17,13 +17,13 @@ refs.modalClose.addEventListener("click", onCloseModalWindow);
 function onImageClick(event) {
   const targetRef = event.target;
 
-  const isImageRef = targetRef.classList.contains('gallery-img');
+  const isImageRef = targetRef.classList.contains("gallery-img");
   if (!isImageRef) {
     return;
   }
   event.preventDefault();
 
-  const closestLi = targetRef.closest('.gallery-item');
+  const closestLi = targetRef.closest(".gallery-item");
   const listImages = event.currentTarget.children;
   const indexList = Array.from(listImages).indexOf(closestLi);
 
@@ -35,15 +35,13 @@ function onImageClick(event) {
   openModalWindow();
 }
 function openModalWindow() {
-  refs.modalBackdrop.classList.add('is-open');
-  document.body.classList.add('stop-scrolling');
-  window.addEventListener('keydown', onWindowKeydown);
+  refs.modalBackdrop.classList.add("is-open");
+  window.addEventListener("keydown", onWindowKeydown);
 }
 
 function onCloseModalWindow(event) {
-  window.removeEventListener('keydown', onWindowKeydown);
-  document.body.classList.remove('stop-scrolling');
-  refs.modalBackdrop.classList.remove('is-open');
+  window.removeEventListener("keydown", onWindowKeydown);
+  refs.modalBackdrop.classList.remove("is-open");
 }
 
 function onWindowKeydown(event) {

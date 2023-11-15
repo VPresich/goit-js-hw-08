@@ -28,13 +28,12 @@
   border: 1px solid var(--body-bgr-color);
   color: var(--body-bgr-color);
   background-color: transparent;
-  transition: color 250ms ease-out, background-color 250ms ease-out;
+  transition: background-color 250ms ease-out, background-color 250ms ease-out;
 }
 
 .slider-button:hover,
 .slider-button:focus {
   background-color: var(--button-accent-bgr-color);
-  border: none;
 }
 
 .slider-button:disabled {
@@ -61,18 +60,18 @@
   margin-top: 10px;
 }
 
-.slider-counter{  
+.slider-counter {
   padding: 6px 16px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: var(--button-disabled);
-  font-size: 14px; 
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0.04em;
   border-radius: 10px;
-  border: 1px solid var(--button-disabled); 
+  border: 1px solid var(--button-disabled);
 }
 
 .slider-dot {
@@ -82,7 +81,8 @@
   background-color: transparent;
   margin: 0 5px;
   border: 1px solid var(--button-color);
-  cursor: pointer;  
+  cursor: pointer;
+  transition: background-color 250ms ease-out, background-color 250ms ease-out;
 }
 
 .slider-dot:hover {
