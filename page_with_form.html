@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallery with Lightbox</title>
+    <title>Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,12 +15,6 @@
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
     />
     <link rel="stylesheet" href="./css/index.css" />
-    <link
-      href="
-https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css
-"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <header class="header-page">
@@ -51,7 +45,7 @@ https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css
             </li>
             <li class="site-navigation-item">
               <a class="site-navigation-item-link" href="./page_with_form.html"
-                >Submit form</a
+                >Gallery LightBox with butons</a
               >
             </li>
           </ul>
@@ -59,22 +53,38 @@ https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css
       </div>
     </header>
     <main>
-      <section>
-        <div class="container">
-          <h2 class="section-title visually-hidden" id="secondary-gallery">
-            Secondary gallery
+      <section class="section">
+        <div class="feedback-container container">
+          <h2 class="feedback-title visually-hidden" id="secondary-gallery">
+            Submit form
           </h2>
-          <ul class="gallery"></ul>
+          <form class="feedback-form" autocomplete="off">
+            <div class="feedback-form-inputs-wrapper">
+              <label class="feedback-form-field-label"
+                >Email
+                <input
+                  class="feedback-form-input"
+                  type="email"
+                  name="email"
+                  autofocus
+                />
+              </label>
+
+              <label class="feedback-form-field-label"
+                >Message
+                <textarea
+                  class="feedback-form-input feedback-form-message"
+                  name="message"
+                  rows="8"
+                ></textarea>
+              </label>
+            </div>
+            <button class="feedback-form-button" type="submit">Submit</button>
+          </form>
         </div>
       </section>
     </main>
-    <script
-      async
-      src="
-https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js
-"
-    ></script>
-    <script src="./js/create-gallery.js" type="module"></script>
-    <script src="./js/lightbox-buttons-handles.js" type="module"></script>
+
+    <script src="./js/feedback-form-handles.js" type="module"></script>
   </body>
 </html>
