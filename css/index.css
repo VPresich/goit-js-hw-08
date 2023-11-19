@@ -8,5 +8,5 @@
 @import "./layout/gallery.css";
 @import "./layout/slider.css";
 @import "./layout/modal-window.css";
-@import "./layout/lightbox-window.css";
+@import "./layout/basic-lightbox-window.css";
 @import "./layout/feedback-form.css";

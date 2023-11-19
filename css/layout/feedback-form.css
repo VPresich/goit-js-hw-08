@@ -23,6 +23,7 @@
 }
 
 .feedback-form-input {
+  cursor: pointer;
   height: 40px;
   flex-shrink: 0;
   width: 100%;
@@ -51,6 +52,7 @@
 }
 
 .feedback-form-button {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
