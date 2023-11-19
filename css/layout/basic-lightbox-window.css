@@ -1,8 +1,9 @@
 .lightbox-modal {
-  width: 1440px;
-  height: 696px;
+  max-width: 1440px;
   padding-top: 28px;
   padding-bottom: 28px;
+  padding-left: 50px;
+  padding-right: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -43,9 +44,10 @@
   fill: var(--button-accent-bgr-color);
 }
 
-.lightbox-image {
-  width: 1112px;
+.lightbox-image { 
   height: 640px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .lightbox-button {
@@ -96,4 +98,21 @@
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
+}
+
+@media screen and (min-width: 768px) {  
+  .lightbox-modal {   
+    padding-left: 80px;
+    padding-right: 80px;
+    
+  }
+}
+
+@media screen and (min-width: 1112px) { 
+
+  .lightbox-modal {   
+    padding-left: 164px;
+    padding-right: 164px;
+    
+  }
 }
