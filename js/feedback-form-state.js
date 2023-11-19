@@ -1,8 +1,12 @@
+// Class for storing form input field data in the localStorage.
+
 class FeedbackFormState {
   static localStorageKey = "feedback-form-state";
-  #inputs = [];
-  #form = {};
-  #formData = {};
+
+  #form = {}; // Reference to form
+  #inputs = []; // Array of references to form input fields
+  #formData = {}; //An object containing data that is entered into
+  //the form inputs {name: value, }
 
   constructor(form) {
     if (form) this.#inputs = form.querySelectorAll("input, textarea");
@@ -14,6 +18,7 @@ class FeedbackFormState {
     }
   }
 
+  // Class interface
   destroy() {
     if (this.#inputs) {
       this.#form.removeEventListener("submit", this.onSubmitForm.bind(this));
@@ -22,12 +27,12 @@ class FeedbackFormState {
   }
 
   restoreData() {
-    this.#formData = this.#getDataFromLocalStorage();
+    this.#getDataFromLocalStorage();
     this.#insertDataToForm();
   }
 
+  // Event handlers
   onInput(event) {
-    this.#formData = {};
     this.#inputs.forEach((input) => {
       if (input.name) {
         this.#formData[input.name] =
@@ -40,8 +45,7 @@ class FeedbackFormState {
   onSubmitForm(event) {
     event.preventDefault();
     if (!this.#isFormFilled()) {
-      alert("Not all fields are filled in");
-      return;
+      return alert("Not all fields are filled in");
     }
     console.log("submit data: ", this.#formData);
     localStorage.removeItem(FeedbackFormState.localStorageKey);
@@ -49,11 +53,12 @@ class FeedbackFormState {
     event.currentTarget.reset();
   }
 
+  // Private methods
   #getDataFromLocalStorage() {
     const strSavedData = localStorage.getItem(
       FeedbackFormState.localStorageKey
     );
-    return strSavedData ? JSON.parse(strSavedData) : "";
+    this.#formData = strSavedData ? JSON.parse(strSavedData) : {};
   }
 
   #insertDataToForm() {
@@ -76,7 +81,7 @@ class FeedbackFormState {
   #isFormFilled() {
     let result = true;
     this.#inputs.forEach((input) => {
-      result = result && this.#form.elements[input.name].value.trim();
+      result &&= this.#form.elements[input.name].value.trim();
     });
     return result;
   }
