@@ -12,4 +12,8 @@
   --button-bgr-color: #4e75ff;
   --button-accent-bgr-color: #6c8cff;
   --button-disabled: #808080;
+
+  --input-color: #808080;
+  --input-hover-border: #000;
+  --input-border: #808080;
 }
